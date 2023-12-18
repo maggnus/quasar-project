@@ -5,3 +5,6 @@ module "eks" {
   cluster_region = "ap-southeast-1"
 }
 
+output "eks_output" {
+  value = module.eks
+}
