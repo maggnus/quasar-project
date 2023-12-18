@@ -1,5 +1,4 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
+# Output variable definitions
 
 output "cluster_endpoint" {
   description = "Endpoint for EKS control plane"
