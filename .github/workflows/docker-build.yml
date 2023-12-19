@@ -25,7 +25,6 @@ jobs:
           versionSpec: '5.x'
 
       - name: Determine Version
-        id: version
         uses: gittools/actions/gitversion/execute@v0
 
       - name: Display GitVersion outputs (step output)
@@ -99,5 +98,5 @@ jobs:
           echo "CommitDate: ${{ steps.gitversion.outputs.GitVersion_CommitDate }}"
 
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag "quasar-app:${{ steps.version.outputs.GitVersion_SemVer }}"
+        run: docker build . --file Dockerfile --tag quasar-app:${{ env.GitVersion_FullSemVer }}
         working-directory: ./app/quasar-app
