@@ -13,10 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set working directory
-        run: |
-          echo "Setting working directory..."
-        working-directory: ./app/quasar-app
-
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag quasar-app:$(date +%s)
+        working-directory: ./app/quasar-app
