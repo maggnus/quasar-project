@@ -98,5 +98,5 @@ jobs:
           echo "CommitDate: ${{ steps.gitversion.outputs.GitVersion_CommitDate }}"
 
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag quasar-app:${{ steps.gitversion.outputs.semVer }}
+        run: docker build . --file Dockerfile --tag quasar-app:${{ steps.gitversion.outputs.GitVersion_SemVer }}
         working-directory: ./app/quasar-app
