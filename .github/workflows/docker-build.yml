@@ -15,16 +15,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Install GitVersion
-        uses: gittools/actions/gitversion/setup@v0
+      - name: Fetch all history for all tags and branches
+        run: |
+          git fetch --prune --unshallow
+      - run: |
+          npm install
+          npm run format-check
+          npm run build:github
+        name: Build code
+      - name: gitversion/setup
+        uses: ./gitversion/setup
         with:
           versionSpec: '5.x'
-
-      - name: Determine Version
-        id: gitversion # id to later be referenced
-        uses: gittools/actions/gitversion/execute@v0
+      - name: gitversion/execute
+        id: gitversion # step id used as reference for output values
+        uses: ./gitversion/execute
+      - run: |
+          echo "FullSemVer (env.fullSemVer)                                 : ${{ env.fullSemVer }}"
+          echo "FullSemVer (env.GitVersion_FullSemVer)                      : ${{ env.GitVersion_FullSemVer }}"
+          echo "FullSemVer (steps.gitversion.outputs.fullSemVer)            : ${{ steps.gitversion.outputs.fullSemVer }}"
+          echo "FullSemVer (steps.gitversion.outputs.GitVersion_FullSemVer) : ${{ steps.gitversion.outputs.GitVersion_FullSemVer }}"
+        name: Use variables and output
 
       - name: Display GitVersion outputs (step output)
         run: |
