@@ -19,45 +19,14 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  #  build:
-  #    runs-on: ubuntu-latest
-  #
-  #    permissions:
-  #      contents: read
-  #      packages: write
-  #
-  #    steps:
-  #      - uses: actions/checkout@v4
-  #        with:
-  #          fetch-depth: 0
-  #
-  #      - name: Install GitVersion
-  #        uses: gittools/actions/gitversion/setup@v0
-  #        with:
-  #          versionSpec: '5.x'
-  #
-  #      - name: Determine Version
-  #        uses: gittools/actions/gitversion/execute@v0
-  #
-  #      - name: Log in to the Container registry
-  #        uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
-  #        with:
-  #          registry: ${{ env.REGISTRY }}
-  #          username: ${{ github.actor }}
-  #          password: ${{ secrets.GITHUB_TOKEN }}
-  #
-  #      - name: Build and push Docker image
-  #        uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
-  #        with:
-  #          context: ./app/quasar-app
-  #          push: true
-  #          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.GitVersion_SemVer }}
-  #          labels: ${{ env.DOCKER_METADATA_OUTPUT_LABELS }}
-
-  helm:
+  build:
     runs-on: ubuntu-latest
-    steps:
 
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -70,10 +39,22 @@ jobs:
       - name: Determine Version
         uses: gittools/actions/gitversion/execute@v0
 
-      #      - name: Install Helm
-      #        uses: azure/setup-helm@v3
+      - name: Log in to the Container registry
+        uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Push Helm chart to OCI compatible registry (Github)
+      - name: Build and push Docker image
+        uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
+        with:
+          context: ./app/quasar-app
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.GitVersion_SemVer }}
+          labels: ${{ env.DOCKER_METADATA_OUTPUT_LABELS }}
+
+      - name: Push Helm chart to OCI registry (Github)
         uses: appany/helm-oci-chart-releaser@v0.3.0
         with:
           name: ${{ env.PROJECT_NAME }}
@@ -81,8 +62,42 @@ jobs:
           path: ./helm
           registry: ghcr.io
           repository: maggnus/charts
-          registry_username: ${{ github.actor }}
-          registry_password: ${{ secrets.GITHUB_TOKEN }}
-          #          registry_username: ${{ secrets.REGISTRY_USERNAME }}
-          #          registry_password: ${{ secrets.REGISTRY_PASSWORD }}
+          #          registry_username: ${{ github.actor }}
+          #          registry_password: ${{ secrets.GITHUB_TOKEN }}
+          #          #          registry_username: ${{ secrets.REGISTRY_USERNAME }}
+          #          #          registry_password: ${{ secrets.REGISTRY_PASSWORD }}
           update_dependencies: 'true' # Defaults to false
+
+
+#  helm:
+#    runs-on: ubuntu-latest
+#    steps:
+#
+#      - uses: actions/checkout@v4
+#        with:
+#          fetch-depth: 0
+#
+#      - name: Install GitVersion
+#        uses: gittools/actions/gitversion/setup@v0
+#        with:
+#          versionSpec: '5.x'
+#
+#      - name: Determine Version
+#        uses: gittools/actions/gitversion/execute@v0
+#
+#      #      - name: Install Helm
+#      #        uses: azure/setup-helm@v3
+#
+#      - name: Push Helm chart to OCI compatible registry (Github)
+#        uses: appany/helm-oci-chart-releaser@v0.3.0
+#        with:
+#          name: ${{ env.PROJECT_NAME }}
+#          tag: ${{ env.GitVersion_SemVer }}
+#          path: ./helm
+#          registry: ghcr.io
+#          repository: maggnus/charts
+#          #          registry_username: ${{ github.actor }}
+#          #          registry_password: ${{ secrets.GITHUB_TOKEN }}
+#          #          #          registry_username: ${{ secrets.REGISTRY_USERNAME }}
+#          #          #          registry_password: ${{ secrets.REGISTRY_PASSWORD }}
+#          update_dependencies: 'true' # Defaults to false
