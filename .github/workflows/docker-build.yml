@@ -75,8 +75,8 @@ jobs:
       - name: Push Helm chart to OCI compatible registry (Github)
         uses: appany/helm-oci-chart-releaser@v0.3.0
         with:
-          name: ${{ github.repository }}
-          repository: maggnus
+          name: ${{ github.event.repository.name }}
+          repository: maggnus/charts
           tag: ${{ env.GitVersion_SemVer }}
           path: ./helm # Default charts/{name}
           registry: ghcr.io
