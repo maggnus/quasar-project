@@ -8,6 +8,10 @@ bootstrap:
          --path ./k8s/environments/01-quasar-dev \
          --components-extra=image-reflector-controller,image-automation-controller
 
-force-update:
+update:
 	@echo "Force FluxCD to reconcile..."
 	@flux reconcile kustomization flux-system -n flux-system --with-source
+
+uninstall:
+	@echo "Uninstall FluxCD..."
+	@flux uninstall --namespace flux-system
