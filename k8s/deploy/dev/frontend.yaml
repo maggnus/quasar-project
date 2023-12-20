@@ -3,4 +3,4 @@ kind: Kustomization
 metadata:
   name: frontend
 resources:
-  - ../../base/frontend
+  - ../../base/frontend/quasar-app.yaml
