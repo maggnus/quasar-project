@@ -77,7 +77,7 @@ jobs:
         with:
           name: ${{ github.event.repository.name }}
           tag: ${{ env.GitVersion_SemVer }}
-          path: ./helm/${{ github.event.repository.name }} # Default charts/{name}
+          path: ./helm
           registry: ghcr.io
           repository: maggnus/charts
           registry_username: ${{ github.actor }}
