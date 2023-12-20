@@ -7,3 +7,7 @@ bootstrap:
          --repository=quasar-project \
          --path ./k8s/environments/01-quasar-dev \
          --components-extra=image-reflector-controller,image-automation-controller
+
+force-update:
+	@echo "Force FluxCD to reconcile..."
+	@flux reconcile kustomization flux-system -n flux-system --with-source
