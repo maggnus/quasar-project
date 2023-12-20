@@ -3,5 +3,6 @@ kind: Kustomization
 metadata:
   name: frontend
   namespace: flux-system
-resources:
-  - ../../base/frontend
+spec:
+  resources:
+    - ../../base/frontend
