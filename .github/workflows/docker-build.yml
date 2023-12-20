@@ -61,20 +61,23 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install Helm
-        uses: azure/setup-helm@v3
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v0
+        with:
+          versionSpec: '5.x'
 
-      #      - name: Build helm package
-      #        run: |
-      #          make build
-      #        working-directory: ./helm
+      - name: Determine Version
+        uses: gittools/actions/gitversion/execute@v0
+
+      #      - name: Install Helm
+      #        uses: azure/setup-helm@v3
 
       - name: Push Helm chart to OCI compatible registry (Github)
         uses: appany/helm-oci-chart-releaser@v0.3.0
         with:
           name: ${{ github.repository }}
           repository: maggnus
-          tag: 0.1.0
+          tag: ${{ env.GitVersion_SemVer }}
           path: ./helm # Default charts/{name}
           registry: ghcr.io
           registry_username: ${{ github.actor }}
