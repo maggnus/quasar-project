@@ -3,12 +3,16 @@ name: Docker Image CI
 on:
   push:
     branches: [ "main" ]
-  #    paths:
-  #      - 'app/**'
+    paths:
+      - '.github/**'
+      - 'app/**'
+      - 'helm/**'
   pull_request:
     branches: [ "main" ]
-  #    paths:
-  #      - 'app/**'
+    paths:
+      - '.github/**'
+      - 'app/**'
+      - 'helm/**'
   release:
     types:
       - created
@@ -57,7 +61,7 @@ jobs:
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.GitVersion_SemVer }}
           labels: ${{ env.DOCKER_METADATA_OUTPUT_LABELS }}
 
-      - name: Push Helm chart to OCI registry (Github)
+      - name: Build and push Helm chart to OCI registry (Github)
         uses: appany/helm-oci-chart-releaser@v0.3.0
         with:
           name: ${{ env.PROJECT_NAME }}
