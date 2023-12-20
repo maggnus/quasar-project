@@ -76,10 +76,10 @@ jobs:
         uses: appany/helm-oci-chart-releaser@v0.3.0
         with:
           name: ${{ github.event.repository.name }}
-          repository: maggnus/charts
           tag: ${{ env.GitVersion_SemVer }}
-          path: ./helm # Default charts/{name}
+          path: ./helm/${{ github.event.repository.name }} # Default charts/{name}
           registry: ghcr.io
+          repository: maggnus/charts
           registry_username: ${{ github.actor }}
           registry_password: ${{ secrets.GITHUB_TOKEN }}
           #          registry_username: ${{ secrets.REGISTRY_USERNAME }}
