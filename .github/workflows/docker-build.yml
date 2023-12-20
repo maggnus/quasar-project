@@ -15,6 +15,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
+  PROJECT_NAME: ${{ github.repository.name }}
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
@@ -75,7 +76,7 @@ jobs:
       - name: Push Helm chart to OCI compatible registry (Github)
         uses: appany/helm-oci-chart-releaser@v0.3.0
         with:
-          #          name: ${{ github.event.repository.name }}
+          name: ${{ env.PROJECT_NAME }}
           tag: ${{ env.GitVersion_SemVer }}
           path: ./helm
           registry: ghcr.io
