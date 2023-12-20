@@ -64,10 +64,10 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@v3
 
-      - name: Build helm package
-        run: |
-          make build
-        working-directory: ./helm
+      #      - name: Build helm package
+      #        run: |
+      #          make build
+      #        working-directory: ./helm
 
       - name: Push Helm chart to OCI compatible registry (Github)
         uses: appany/helm-oci-chart-releaser@v0.3.0
@@ -75,7 +75,7 @@ jobs:
           name: ${{ github.repository }}
           repository: maggnus
           tag: 0.1.0
-          path: helm/${{ github.repository }} # Default charts/{name}
+          path: ./helm # Default charts/{name}
           registry: ghcr.io
           registry_username: ${{ github.actor }}
           registry_password: ${{ secrets.GITHUB_TOKEN }}
