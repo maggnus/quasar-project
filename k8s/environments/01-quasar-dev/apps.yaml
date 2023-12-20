@@ -9,7 +9,7 @@ spec:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  path: ./k8s/deploy/dev
+  path: ./k8s/apps/dev
   prune: true
   #validation: client
 
