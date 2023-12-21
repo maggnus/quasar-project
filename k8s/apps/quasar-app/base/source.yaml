@@ -3,9 +3,9 @@ apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: OCIRepository
 metadata:
   name: quasar-app
-  namespace: default
+  namespace: flux-system
 spec:
-  interval: 5m0s
   url: oci://ghcr.io/maggnus/charts/quasar-app
   ref:
     tag: latest
+  interval: 1m0s
