@@ -20,6 +20,16 @@ spec:
     replicaCount: 2
     service:
       type: LoadBalancer
+    image:
+      repository: docker pull ghcr.io/maggnus/charts/quasar-project:latest
+      imagePullPolicy: Always
+      ports:
+        - name: app
+          containerPort: 9000
+          protocol: TCP
+      imagePullSecrets:
+        - name: ghcr-auth
+          namespace: flux-system
 
 
 #image:
