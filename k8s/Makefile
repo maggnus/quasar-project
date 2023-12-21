@@ -15,3 +15,11 @@ update:
 uninstall:
 	@echo "Uninstall FluxCD..."
 	@flux uninstall --namespace flux-system
+
+secret:
+	@echo "Generate oci secret..."
+	@flux create secret oci quasar-project \
+         --url=ghcr.io \
+         --username=maggnus \
+         --password=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 \
+         --export
