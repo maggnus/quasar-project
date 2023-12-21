@@ -20,4 +20,4 @@ resources:
 
 # Environment-specific labels
 commonLabels:
-  environment: prod
+  environment: dev
