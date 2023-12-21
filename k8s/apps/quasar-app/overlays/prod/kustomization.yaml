@@ -4,20 +4,3 @@ kind: Kustomization
 # Reference the base configuration
 resources:
   - namespace.yaml
-
-## Additional resources for the development environment
-#resources:
-#  - development-specific-resource.yaml
-#
-## Customization specific to the development environment
-#patches:
-#  - path: development-patch.yaml
-#    target:
-#      group: apps
-#      version: v1
-#      kind: Deployment
-#      name: app1-deployment
-
-# Environment-specific labels
-commonLabels:
-  environment: dev
