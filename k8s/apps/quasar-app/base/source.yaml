@@ -1,12 +1,22 @@
+#---
+#apiVersion: v1
+#kind: Secret
+#metadata:
+#  name: ghcr-auth
+#  namespace: flux-system
+#stringData:
+#  .dockerconfigjson: '{"auths":{"ghcr.io":{"username":"maggnus","password":"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","auth":"Zmx1eDp0ZXN0"}}}'
+#type: kubernetes.io/dockerconfigjson
+
 ---
 apiVersion: v1
 kind: Secret
 metadata:
   name: ghcr-auth
-  namespace: flux-system
+  namespace: default
 stringData:
-  .dockerconfigjson: '{"auths":{"ghcr.io":{"username":"maggnus","password":"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","auth":"Zmx1eDp0ZXN0"}}}'
-type: kubernetes.io/dockerconfigjson
+  username: "maggnus"
+  password: "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"
 
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta2
@@ -15,7 +25,7 @@ metadata:
   name: github
   namespace: flux-system
 spec:
-  interval: 10m
+  interval: 1m
   type: oci
   url: oci://ghcr.io/maggnus/charts/
   secretRef:
