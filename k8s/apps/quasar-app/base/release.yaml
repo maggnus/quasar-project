@@ -1,19 +1,33 @@
-#---
-#apiVersion: helm.toolkit.fluxcd.io/v2beta1
-#kind: HelmRelease
-#metadata:
-#  name: quasar-app
-#  namespace: default
-#spec:
-#  interval: 1m0s
-#  releaseName: quasar-project
-#  chart:
-#    spec:
-#      chart: quasar-project
-#      reconcileStrategy: ChartVersion
-#      sourceRef:
-#        kind: HelmRepository
-#        namespace: flux-system
-#        name: ghcr-oci
-#  #      version: '>4.0.0'
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: quasar-app
+  namespace: default
+spec:
+  interval: 1m0s
+  releaseName: quasar-project
+  chart:
+    spec:
+      chart: quasar-project
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        namespace: flux-system
+        name: ghcr-oci
+  #      version: '>4.0.0'
+  values:
+    replicaCount: 2
+    service:
+      type: LoadBalancer
+
+
+#image:
+#  repository: nginx
+#  pullPolicy: IfNotPresent
+#  # Overrides the image tag whose default is the chart appVersion.
+#  tag: ""
 #
+#imagePullSecrets: []
+#nameOverride: ""
+#fullnameOverride: ""
