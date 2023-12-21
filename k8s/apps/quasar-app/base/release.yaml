@@ -30,8 +30,8 @@ spec:
       #          containerPort: 9000
       #          protocol: TCP
       imagePullSecrets:
-        - name: ghcr-auth
-      #        - name: ghcr-secret
+        #        - name: ghcr-auth
+        - name: ghcr-secret
       #          namespace: flux-system
       securityContext:
         capabilities:
