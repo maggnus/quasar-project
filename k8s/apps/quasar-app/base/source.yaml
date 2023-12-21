@@ -5,7 +5,7 @@ metadata:
   name: ghcr-auth
   namespace: flux-system
 stringData:
-  .dockerconfigjson: '{"auths":{"ghcr.io":{"username":"flux","password":"test","auth":"Zmx1eDp0ZXN0"}}}'
+  .dockerconfigjson: '{"auths":{"ghcr.io":{"username":"maggnus","password":"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","auth":"Zmx1eDp0ZXN0"}}}'
 type: kubernetes.io/dockerconfigjson
 
 ---
