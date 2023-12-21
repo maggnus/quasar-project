@@ -11,6 +11,6 @@ spec:
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
-        name: ghcr-auth
+        name: ghcr-oci
   #      version: '>4.0.0'
-  interval: 10m0s
+  interval: 1m0s

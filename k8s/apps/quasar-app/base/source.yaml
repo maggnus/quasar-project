@@ -22,7 +22,7 @@ stringData:
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
-  name: github
+  name: ghcr-oci
   namespace: flux-system
 spec:
   interval: 1m
