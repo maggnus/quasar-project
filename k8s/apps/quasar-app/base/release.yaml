@@ -21,8 +21,9 @@ spec:
     service:
       type: LoadBalancer
     image:
-      repository: docker pull ghcr.io/maggnus/charts/quasar-project:latest
+      repository: docker pull ghcr.io/maggnus/charts/quasar-project
       imagePullPolicy: Always
+      tag: latest
       ports:
         - name: app
           containerPort: 9000
