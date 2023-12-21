@@ -7,10 +7,10 @@ metadata:
 spec:
   chart:
     spec:
-      chart: podinfo
+      chart: quasar-project
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
-        name: podinfo
-      version: '>4.0.0'
+        name: ghcr-auth
+  #      version: '>4.0.0'
   interval: 10m0s
