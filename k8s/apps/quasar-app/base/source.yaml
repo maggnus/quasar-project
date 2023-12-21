@@ -5,7 +5,7 @@ metadata:
   name: quasar-app
   namespace: flux-system
 spec:
-  url: oci://ghcr.io/maggnus/charts/quasar-app
+  url: oci://ghcr.io/maggnus/charts/quasar-project
   ref:
     tag: latest
   interval: 1m0s
