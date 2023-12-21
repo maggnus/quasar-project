@@ -5,7 +5,7 @@ bootstrap:
 	@flux bootstrap github \
          --owner=maggnus \
          --repository=quasar-project \
-         --path ./k8s/cluster/quasar/dev \
+         --path ./k8s/clusters/quasar/dev \
          --components-extra=image-reflector-controller,image-automation-controller
 
 update:

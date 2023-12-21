@@ -2,8 +2,8 @@
   "apiVersion": "v1",
   "kind": "Namespace",
   "metadata": {
-    "creationTimestamp": "2023-12-20T16:31:06Z",
-    "deletionTimestamp": "2023-12-20T18:12:05Z",
+    "creationTimestamp": "2023-12-21T04:08:32Z",
+    "deletionTimestamp": "2023-12-21T04:09:54Z",
     "labels": {
       "app.kubernetes.io/instance": "flux-system",
       "app.kubernetes.io/part-of": "flux",
@@ -15,8 +15,8 @@
       "pod-security.kubernetes.io/warn-version": "latest"
     },
     "name": "flux-system",
-    "resourceVersion": "42767",
-    "uid": "b36eccc2-944c-487e-8c1b-0ec495cb79ad"
+    "resourceVersion": "206044",
+    "uid": "386bc443-ed8e-4015-b886-0fd30bed550c"
   },
   "spec": {
     "finalizers": []
@@ -24,35 +24,35 @@
   "status": {
     "conditions": [
       {
-        "lastTransitionTime": "2023-12-20T18:12:11Z",
-        "message": "All resources successfully discovered",
-        "reason": "ResourcesDiscovered",
-        "status": "False",
+        "lastTransitionTime": "2023-12-21T04:09:59Z",
+        "message": "Discovery failed for some groups, 1 failing: unable to retrieve the complete list of server APIs: metrics.k8s.io/v1beta1: stale GroupVersion discovery: metrics.k8s.io/v1beta1",
+        "reason": "DiscoveryFailed",
+        "status": "True",
         "type": "NamespaceDeletionDiscoveryFailure"
       },
       {
-        "lastTransitionTime": "2023-12-20T18:12:11Z",
+        "lastTransitionTime": "2023-12-21T04:10:00Z",
         "message": "All legacy kube types successfully parsed",
         "reason": "ParsedGroupVersions",
         "status": "False",
         "type": "NamespaceDeletionGroupVersionParsingFailure"
       },
       {
-        "lastTransitionTime": "2023-12-20T18:12:11Z",
+        "lastTransitionTime": "2023-12-21T04:10:03Z",
         "message": "All content successfully deleted, may be waiting on finalization",
         "reason": "ContentDeleted",
         "status": "False",
         "type": "NamespaceDeletionContentFailure"
       },
       {
-        "lastTransitionTime": "2023-12-20T18:12:11Z",
-        "message": "Some resources are remaining: pods. has 2 resource instances",
-        "reason": "SomeResourcesRemain",
-        "status": "True",
+        "lastTransitionTime": "2023-12-21T04:10:03Z",
+        "message": "All content successfully removed",
+        "reason": "ContentRemoved",
+        "status": "False",
         "type": "NamespaceContentRemaining"
       },
       {
-        "lastTransitionTime": "2023-12-20T18:12:11Z",
+        "lastTransitionTime": "2023-12-21T04:10:00Z",
         "message": "All content-preserving finalizers finished",
         "reason": "ContentHasNoFinalizers",
         "status": "False",
