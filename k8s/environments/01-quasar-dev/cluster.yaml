@@ -10,6 +10,5 @@ spec:
     name: flux-system
     namespace: flux-system
   path: ./k8s/clusters/dev
-  #  path: ./k8s/apps/quasar-app/overlays/dev
   prune: true
 
