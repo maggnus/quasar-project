@@ -11,5 +11,5 @@ spec:
     namespace: flux-system
   path: ./k8s/apps
   prune: true
-  validation: client
+#  validation: client
 
