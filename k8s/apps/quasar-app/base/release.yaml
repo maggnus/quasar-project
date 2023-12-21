@@ -34,7 +34,12 @@ spec:
       #        - name: ghcr-secret
       #          namespace: flux-system
       securityContext:
+        capabilities:
+          drop:
+            - ALL
         readOnlyRootFilesystem: true
+        runAsNonRoot: true
+        runAsUser: 1000
 
 
 #image:
