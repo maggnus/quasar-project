@@ -5,6 +5,8 @@ metadata:
   name: quasar-app
   namespace: flux-system
 spec:
+  interval: 1m0s
+  releaseName: quasar-project
   chart:
     spec:
       chart: quasar-project
@@ -13,4 +15,4 @@ spec:
         kind: HelmRepository
         name: ghcr-oci
   #      version: '>4.0.0'
-  interval: 1m0s
+
