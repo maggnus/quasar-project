@@ -5,14 +5,15 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m0s
-  dependsOn:
-    - name: infra
+  #  dependsOn:
+  #    - name: infra
   sourceRef:
     kind: GitRepository
     name: flux-system
     namespace: flux-system
-  path: ./k8s/clusters/dev/apps
+  path: ./k8s/apps/dev
   prune: true
-  #validation: client
+  validation: client
+
 
 
