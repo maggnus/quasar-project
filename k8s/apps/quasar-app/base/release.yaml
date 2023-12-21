@@ -31,7 +31,13 @@ spec:
       #          protocol: TCP
       imagePullSecrets:
         - name: ghcr-secret
-#          namespace: flux-system
+      #          namespace: flux-system
+      securityContext:
+        # capabilities:
+        #   drop:
+        #   - ALL
+        readOnlyRootFilesystem: true
+      # runAsNonRoot: true
 
 
 #image:
