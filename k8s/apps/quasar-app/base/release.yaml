@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: quasar-app
-  namespace: flux-system
+  namespace: default
 spec:
   interval: 1m0s
   releaseName: quasar-project
@@ -13,6 +13,7 @@ spec:
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
+        namespace: flux-system
         name: ghcr-oci
   #      version: '>4.0.0'
 
