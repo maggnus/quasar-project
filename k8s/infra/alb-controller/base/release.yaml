@@ -16,4 +16,5 @@ spec:
     clusterName: covergo-euce1-prod
     serviceAccount:
       create: false
-      name: alb-controller-sa
+      name: aws-load-balancer-controller
+#      name: alb-controller-sa
