@@ -13,7 +13,7 @@ spec:
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
-        namespace: dev
+        #        namespace: dev
         name: ghcr-oci
   values:
     replicaCount: 2
