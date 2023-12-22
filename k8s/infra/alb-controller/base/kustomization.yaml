@@ -1,27 +1,50 @@
----
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+#  - namespace.yaml
 resources:
-  - namespace.yaml
   - serviceaccount.yaml
-  - repo.yaml
+  - repository.yaml
   - release.yaml
 
 configurations:
   - configuration.yaml
 
 configMapGenerator:
-  - name: ops-properties
+  - envs:
+      - environment.properties
+    name: ops-properties
     namespace: default
-    envs: [ environment.properties ]
 
-vars:
-  - name: AWS_ACCOUNT
-    objref: { kind: ConfigMap, name: ops-properties, apiVersion: v1 }
-    fieldref: { fieldpath: data.AWS_ACCOUNT }
-  - name: CLUSTER_NAME
-    objref: { kind: ConfigMap, name: ops-properties, apiVersion: v1 }
-    fieldref: { fieldpath: data.CLUSTER_NAME }
-  - name: TARGET_NAMESPACE
-    objref: { kind: ConfigMap, name: ops-properties, apiVersion: v1 }
-    fieldref: { fieldpath: data.TARGET_NAMESPACE }
+#vars:
+#- fieldref:
+#    fieldPath: data.AWS_ACCOUNT
+#  name: AWS_ACCOUNT
+#  objref:
+#    apiVersion: v1
+#    kind: ConfigMap
+#    name: ops-properties
+#- fieldref:
+#    fieldPath: data.CLUSTER_NAME
+#  name: CLUSTER_NAME
+#  objref:
+#    apiVersion: v1
+#    kind: ConfigMap
+#    name: ops-properties
+#- fieldref:
+#    fieldPath: data.TARGET_NAMESPACE
+#  name: TARGET_NAMESPACE
+#  objref:
+#    apiVersion: v1
+#    kind: ConfigMap
+#    name: ops-properties
+
+#vars:
+#  - name: AWS_ACCOUNT
+#    objref: { kind: ConfigMap, name: ops-properties, apiVersion: v1 }
+#    fieldref: { fieldpath: data.AWS_ACCOUNT }
+#  - name: CLUSTER_NAME
+#    objref: { kind: ConfigMap, name: ops-properties, apiVersion: v1 }
+#    fieldref: { fieldpath: data.CLUSTER_NAME }
+#  - name: TARGET_NAMESPACE
+#    objref: { kind: ConfigMap, name: ops-properties, apiVersion: v1 }
+#    fieldref: { fieldpath: data.TARGET_NAMESPACE }

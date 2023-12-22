@@ -1,0 +1,234 @@
+Validate kustomizations settings...
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Namespace
+  metadata:
+    creationTimestamp: "2023-12-22T09:01:55Z"
+    labels:
+      kubernetes.io/metadata.name: dev
+      kustomize.toolkit.fluxcd.io/name: apps
+      kustomize.toolkit.fluxcd.io/namespace: flux-system
+    name: dev
+    resourceVersion: "681373"
+    uid: a813eb18-ef2b-4252-ae12-37f3f36a3da4
+  spec:
+    finalizers:
+    - kubernetes
+  status:
+    phase: Active
+- apiVersion: v1
+  kind: ServiceAccount
+  metadata:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::111111111111:role/covergo-region-env-alb-controller
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"ServiceAccount","metadata":{"annotations":{"eks.amazonaws.com/role-arn":"arn:aws:iam::111111111111:role/covergo-region-env-alb-controller"},"name":"alb-controller-sa","namespace":"dev"}}
+    name: alb-controller-sa
+    namespace: dev
+- apiVersion: v1
+  data:
+    AWS_ACCOUNT: "111111111111"
+    CLUSTER_NAME: covergo-region-env
+    TARGET_NAMESPACE: target-namespace
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","data":{"AWS_ACCOUNT":"111111111111","CLUSTER_NAME":"covergo-region-env","TARGET_NAMESPACE":"target-namespace"},"kind":"ConfigMap","metadata":{"annotations":{},"name":"ops-properties-mfdbhb4bb4","namespace":"dev"}}
+    name: ops-properties-mfdbhb4bb4
+    namespace: dev
+- apiVersion: v1
+  data:
+    password: Z2hwX0IzTmhTREltSEVVeVhjTnMwSHF1VEFaRlRYMGZIVjJjRkxsWQ==
+    username: bWFnZ251cw==
+  kind: Secret
+  metadata:
+    creationTimestamp: "2023-12-22T09:01:55Z"
+    labels:
+      kustomize.toolkit.fluxcd.io/name: apps
+      kustomize.toolkit.fluxcd.io/namespace: flux-system
+    name: ghcr-oci
+    namespace: dev
+    resourceVersion: "681376"
+    uid: 27382ba5-dfcc-4fd8-9ec2-f3bcb2efd6e5
+  type: Opaque
+- apiVersion: v1
+  data:
+    .dockerconfigjson: eyJhdXRocyI6eyJnaGNyLmlvIjp7InVzZXJuYW1lIjoibWFnZ251cyIsInBhc3N3b3JkIjoiZ2hwX0IzTmhTREltSEVVeVhjTnMwSHF1VEFaRlRYMGZIVjJjRkxsWSIsImF1dGgiOiJiV0ZuWjI1MWN6cG5hSEJmUWpOT2FGTkVTVzFJUlZWNVdHTk9jekJJY1hWVVFWcEdWRmd3WmtoV01tTkdUR3haIn19fQ==
+  kind: Secret
+  metadata:
+    creationTimestamp: "2023-12-22T09:01:55Z"
+    labels:
+      kustomize.toolkit.fluxcd.io/name: apps
+      kustomize.toolkit.fluxcd.io/namespace: flux-system
+    name: ghcr-secret
+    namespace: dev
+    resourceVersion: "681377"
+    uid: 61fceb17-5b58-47c1-8f75-8c171aadaef0
+  type: kubernetes.io/dockerconfigjson
+- apiVersion: helm.toolkit.fluxcd.io/v2beta1
+  kind: HelmRelease
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"helm.toolkit.fluxcd.io/v2beta1","kind":"HelmRelease","metadata":{"annotations":{},"name":"alb-controller","namespace":"dev"},"spec":{"chart":{"spec":{"chart":"aws-load-balancer-controller","sourceRef":{"kind":"HelmRepository","name":"alb-controller"}}},"interval":"1m0s","releaseName":"alb-controller","values":{"clusterName":"covergo-euce1-prod","serviceAccount":{"create":false,"name":"alb-controller-sa"}}}}
+    name: alb-controller
+    namespace: dev
+  spec:
+    chart:
+      spec:
+        chart: aws-load-balancer-controller
+        sourceRef:
+          kind: HelmRepository
+          name: alb-controller
+    interval: 1m0s
+    releaseName: alb-controller
+    values:
+      clusterName: covergo-euce1-prod
+      serviceAccount:
+        create: false
+        name: alb-controller-sa
+- apiVersion: helm.toolkit.fluxcd.io/v2beta1
+  kind: HelmRelease
+  metadata:
+    annotations:
+      description: Base configuration for quasar-app
+    creationTimestamp: "2023-12-22T09:01:55Z"
+    finalizers:
+    - finalizers.fluxcd.io
+    generation: 3
+    labels:
+      app: quasar-app
+      kustomize.toolkit.fluxcd.io/name: apps
+      kustomize.toolkit.fluxcd.io/namespace: flux-system
+      tier: frontend
+    name: quasar-project
+    namespace: dev
+    resourceVersion: "711803"
+    uid: 931349f0-37c3-42d4-ade3-92b7a931fdfa
+  spec:
+    chart:
+      spec:
+        chart: quasar-project
+        reconcileStrategy: ChartVersion
+        sourceRef:
+          kind: HelmRepository
+          name: ghcr-oci
+        version: '*'
+    interval: 1m0s
+    releaseName: quasar-project
+    values:
+      image:
+        imagePullPolicy: Always
+        repository: ghcr.io/maggnus/quasar-project
+        tag: latest
+      imagePullSecrets:
+      - name: ghcr-secret
+      replicaCount: 2
+      securityContext:
+        capabilities:
+          drop:
+          - ALL
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+        runAsUser: 1000
+      service:
+        port: 9000
+        type: ClusterIP
+  status:
+    conditions:
+    - lastTransitionTime: "2023-12-22T10:47:06Z"
+      message: Failed to upgrade after 1 attempt(s)
+      observedGeneration: 3
+      reason: RetriesExceeded
+      status: "True"
+      type: Stalled
+    - lastTransitionTime: "2023-12-22T10:47:06Z"
+      message: 'Helm upgrade failed for release dev/quasar-project with chart quasar-project@0.2.3:
+        context deadline exceeded'
+      observedGeneration: 3
+      reason: UpgradeFailed
+      status: "False"
+      type: Ready
+    - lastTransitionTime: "2023-12-22T10:47:06Z"
+      message: 'Helm upgrade failed for release dev/quasar-project with chart quasar-project@0.2.3:
+        context deadline exceeded'
+      observedGeneration: 3
+      reason: UpgradeFailed
+      status: "False"
+      type: Released
+    failures: 1
+    helmChart: dev/dev-quasar-project
+    history:
+    - chartName: quasar-project
+      chartVersion: 0.2.3
+      configDigest: sha256:c22bbd62883503b72f160a862b07bd9e90f1ae32ac27e8d32acb1ee7964db3a5
+      digest: sha256:361cfc73ce112bfb251aea00980ac81a671a1b778ae68e2fa7b4b6d7713fe71e
+      firstDeployed: "2023-12-22T09:02:01Z"
+      lastDeployed: "2023-12-22T10:42:03Z"
+      name: quasar-project
+      namespace: dev
+      status: failed
+      version: 3
+    - chartName: quasar-project
+      chartVersion: 0.2.3
+      configDigest: sha256:bf6ef4108bb7070ba6f74a2aa28ad392893a30343c2a08bfb4ccf8b951243359
+      digest: sha256:9c77fd548f3c91fa6f060b7838dd7e195fd70e9b5d46524f915d529a7f475675
+      firstDeployed: "2023-12-22T09:02:01Z"
+      lastDeployed: "2023-12-22T09:07:04Z"
+      name: quasar-project
+      namespace: dev
+      status: deployed
+      version: 2
+    - chartName: quasar-project
+      chartVersion: 0.2.3
+      configDigest: sha256:817cbf854286ddc718bf1d76eb3414a85c0e069759b426c903806f2bea312bf8
+      digest: sha256:a0700899a5a27ac7d9f8a32e71caee8d2fa232db879b675fd76b6beba73bf502
+      firstDeployed: "2023-12-22T09:02:01Z"
+      lastDeployed: "2023-12-22T09:02:01Z"
+      name: quasar-project
+      namespace: dev
+      status: superseded
+      version: 1
+    lastAppliedRevision: 0.2.3
+    lastAttemptedConfigDigest: sha256:c22bbd62883503b72f160a862b07bd9e90f1ae32ac27e8d32acb1ee7964db3a5
+    lastAttemptedGeneration: 3
+    lastAttemptedReleaseAction: upgrade
+    lastAttemptedRevision: 0.2.3
+    observedGeneration: 3
+    storageNamespace: dev
+    upgradeFailures: 1
+- apiVersion: source.toolkit.fluxcd.io/v1beta1
+  kind: HelmRepository
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"source.toolkit.fluxcd.io/v1beta1","kind":"HelmRepository","metadata":{"annotations":{},"name":"alb-controller","namespace":"dev"},"spec":{"interval":"1m0s","url":"https://aws.github.io/eks-charts"}}
+    name: alb-controller
+    namespace: dev
+  spec:
+    interval: 1m0s
+    url: https://aws.github.io/eks-charts
+- apiVersion: source.toolkit.fluxcd.io/v1beta2
+  kind: HelmRepository
+  metadata:
+    creationTimestamp: "2023-12-22T09:01:55Z"
+    generation: 1
+    labels:
+      kustomize.toolkit.fluxcd.io/name: apps
+      kustomize.toolkit.fluxcd.io/namespace: flux-system
+    name: ghcr-oci
+    namespace: dev
+    resourceVersion: "681384"
+    uid: 07270d06-5a51-410c-aac0-db53c00c1e3f
+  spec:
+    interval: 1m
+    provider: generic
+    secretRef:
+      name: ghcr-oci
+    type: oci
+    url: oci://ghcr.io/maggnus/charts/
+  status: {}
+kind: List
+metadata: {}

@@ -1,9 +1,8 @@
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: alb-controller
-  namespace: alb-controller
 spec:
   interval: 1m0s
   releaseName: alb-controller

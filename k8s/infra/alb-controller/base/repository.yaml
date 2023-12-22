@@ -3,7 +3,6 @@ apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
   name: alb-controller
-  namespace: alb-controller
 spec:
-  interval: 10m0s
+  interval: 1m0s
   url: https://aws.github.io/eks-charts
