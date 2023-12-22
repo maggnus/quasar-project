@@ -22,9 +22,9 @@ spec:
       type: LoadBalancer
       port: 9000
     image:
-      repository: ghcr.io/maggnus/quasar-project
+      repository: ghcr.io/maggnus/charts/quasar-project
       imagePullPolicy: Always
-      tag: latest
+      tag: 0.2.3
       #      ports:
       #        - name: app
       #          containerPort: 9000
