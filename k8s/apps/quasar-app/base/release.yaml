@@ -13,7 +13,7 @@ spec:
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
-        namespace: flux-system
+        namespace: default
         name: ghcr-oci
   #      version: '>4.0.0'
   values:
