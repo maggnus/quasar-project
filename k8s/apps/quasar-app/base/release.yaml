@@ -29,17 +29,15 @@ spec:
       #        - name: app
       #          containerPort: 9000
       #          protocol: TCP
-      imagePullSecrets:
-        - name: ghcr-secret
-      #        - name: ghcr-secret
-      #          namespace: flux-system
-      securityContext:
-        capabilities:
-          drop:
-            - ALL
-        readOnlyRootFilesystem: true
-        runAsNonRoot: true
-        runAsUser: 1000
+    imagePullSecrets:
+      - name: ghcr-secret
+    securityContext:
+      capabilities:
+        drop:
+          - ALL
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1000
 
 
 #image:
