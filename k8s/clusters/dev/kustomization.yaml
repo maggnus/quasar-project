@@ -11,31 +11,3 @@ resources:
 #commonLabels:
 #  stage: dev
 
-#patches:
-#  - patch: |-
-#      - op: replace
-#        path: /spec/namespace
-#        value: dev
-#
-
-#patches:
-#  - target:
-#      kind: HelmRelease
-#    patch: |-
-#      - op: replace
-#        path: spec/chart/spec/sourceRef/namespace
-#        value: dev
-
-
-#patches:
-#  - target:
-#      kind: HelmRelease
-#      #      name: .*-helm-release
-#      version: v2beta1
-#    patch: |-
-#      - op: add
-#        path: /spec/targetNamespace
-#        value: dev
-#      - op: replace
-#        path: /metadata/namespace
-#        value: dev
