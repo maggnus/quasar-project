@@ -6,6 +6,6 @@ resources:
   - namespaces
   - secrets
   - repositories
-  - infra
-  - apps
+#  - infra
+#  - apps
 
