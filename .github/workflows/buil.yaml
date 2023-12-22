@@ -58,7 +58,7 @@ jobs:
         with:
           context: ./app/quasar-app
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.GitVersion_SemVer }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest,${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.GitVersion_SemVer }}
           labels: ${{ env.DOCKER_METADATA_OUTPUT_LABELS }}
 
       - name: Build and push Helm chart to OCI registry (Github)
