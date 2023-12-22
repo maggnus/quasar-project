@@ -11,7 +11,8 @@ resources:
 commonLabels:
   stage: dev
 
-#patches:
-#  - patch: |
-#      - op: replace
-#        path:
+patches:
+  - patch: |
+      - op: replace
+        path: /spec/namespace
+        value: dev
