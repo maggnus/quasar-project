@@ -11,7 +11,7 @@ resources:
 commonLabels:
   stage: dev
 
-patches:
+patchesJson6902:
   - patch: |
       - op: replace
         path: /spec/namespace
