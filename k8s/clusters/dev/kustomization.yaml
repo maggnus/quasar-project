@@ -16,5 +16,13 @@ commonLabels:
 #      - op: replace
 #        path: /spec/namespace
 #        value: dev
-
 #
+
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/namespace
+        value: dev
+    target:
+      kind: Deployment
+      name: argocd-server
