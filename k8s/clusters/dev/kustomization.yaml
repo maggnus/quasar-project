@@ -21,7 +21,7 @@ resources:
 patches:
   - patch: |-
       - op: replace
-        path: /spec/namespace
+        path: /metadata/namespace
         value: dev
     target:
       kind: HelmChart
