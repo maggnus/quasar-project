@@ -2,12 +2,11 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: flux-system
+  name: quasar-project
   namespace: default
 spec:
   interval: 1m0s
   releaseName: quasar-project
-  namespace: default
   chart:
     spec:
       chart: quasar-project
