@@ -12,7 +12,7 @@ commonLabels:
   stage: dev
 
 patchesJson6902:
-  - patch: |
+  - patch: |-
       - op: replace
         path: /spec/namespace
         value: dev
