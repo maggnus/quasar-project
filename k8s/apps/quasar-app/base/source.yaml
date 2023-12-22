@@ -31,3 +31,35 @@ spec:
   url: oci://ghcr.io/maggnus/charts/
   secretRef:
     name: ghcr-auth
+
+
+
+
+
+#---
+#apiVersion: external-secrets.io/v1beta1
+#kind: ExternalSecret
+#metadata:
+#  name: oci-ghcr-io
+#  namespace: $(TARGET_NAMESPACE)
+#spec:
+#  refreshInterval: 1h
+#  secretStoreRef:
+#    name: external-secret-secretstore
+#    kind: SecretStore
+#  target:
+#    name: oci-ghcr-io
+#    template:
+#      data:
+#        username: "{{ .username | toString }}"
+#        password: "{{ .password | toString }}"
+#    creationPolicy: Owner
+#  data:
+#    - secretKey: username
+#      remoteRef:
+#        key: $(AWS_SECRETS_CONFIGURATION_PATH_KEY)/configuration/oci-ghcr-io
+#        property: username
+#    - secretKey: password
+#      remoteRef:
+#        key: $(AWS_SECRETS_CONFIGURATION_PATH_KEY)/configuration/oci-ghcr-io
+#        property: password
