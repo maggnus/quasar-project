@@ -19,10 +19,11 @@ resources:
 #
 
 patches:
-  - patch: |-
+  - target:
+      kind: HelmRelease
+    patch: |-
       - op: replace
-        path: /metadata/namespace
+        path: spec/chart/spec/sourceRef/namespace
         value: dev
-    target:
-      kind: HelmChart
-#      name: argocd-server
+
+
