@@ -11,5 +11,5 @@ resources:
 commonLabels:
   stage: dev
 
-patches:
-  - namespace.yaml
+patchesJson6902:
+  - patch: namespace.yaml
