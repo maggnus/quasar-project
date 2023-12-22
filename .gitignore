@@ -1,5 +1,5 @@
 .idea
 *.iml
 .env
-.work
+work
 ./charts
