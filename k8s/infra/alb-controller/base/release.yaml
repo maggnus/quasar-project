@@ -1,0 +1,20 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: alb-controller
+  namespace: alb-controller
+spec:
+  interval: 1m0s
+  releaseName: alb-controller
+  chart:
+    spec:
+      chart: aws-load-balancer-controller
+      sourceRef:
+        kind: HelmRepository
+        name: alb-controller
+  values:
+    clusterName: covergo-euce1-prod
+    serviceAccount:
+      create: false
+      name: alb-controller-sa

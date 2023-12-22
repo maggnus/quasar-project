@@ -1,0 +1,5 @@
+varReference:
+  - path: metadata/annotations/eks.amazonaws.com/role-arn
+    kind: ServiceAccount
+  - path: metadata/namespace
+    kind: ServiceAccount
