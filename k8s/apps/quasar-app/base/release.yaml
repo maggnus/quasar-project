@@ -23,7 +23,7 @@ spec:
     image:
       repository: ghcr.io/maggnus/quasar-project
       imagePullPolicy: Always
-      tag: latest
+      tag: 0.2.3
     imagePullSecrets:
       - name: ghcr-secret
     securityContext:
