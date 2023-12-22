@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - secrets
   - repositories
-#  - ../../apps/quasar-app/overlays/dev
+  - ../../apps/quasar-app/overlays/dev
 #  - ../../infra/metrics-server/overlays/dev
 commonLabels:
   stage: dev
