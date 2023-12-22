@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   #  - ../../../infra/metrics-server/overlays/dev
   - ../../../infra/external-secrets/overlays/dev
-  #  - ../../../infra/alb-controller/overlays/dev
+  - ../../../infra/alb-controller/overlays/dev
