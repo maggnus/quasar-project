@@ -15,7 +15,6 @@ spec:
         kind: HelmRepository
         namespace: default
         name: ghcr-oci
-  #      version: '>4.0.0'
   values:
     replicaCount: 2
     service:
@@ -24,7 +23,7 @@ spec:
     image:
       repository: ghcr.io/maggnus/quasar-project
       imagePullPolicy: Always
-      tag: 0.2.3
+      tag: latest
     imagePullSecrets:
       - name: ghcr-secret
     securityContext:
@@ -34,14 +33,3 @@ spec:
       readOnlyRootFilesystem: true
       runAsNonRoot: true
       runAsUser: 1000
-
-
-#image:
-#  repository: nginx
-#  pullPolicy: IfNotPresent
-#  # Overrides the image tag whose default is the chart appVersion.
-#  tag: ""
-#
-#imagePullSecrets: []
-#nameOverride: ""
-#fullnameOverride: ""
