@@ -9,7 +9,7 @@ spec:
   type: oci
   url: oci://ghcr.io/maggnus/charts/
   secretRef:
-    name: ghcr-auth
+    name: ghcr-secret
 
 
 
