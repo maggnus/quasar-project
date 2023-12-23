@@ -41,8 +41,19 @@ module "vpc" {
   single_nat_gateway   = true
   enable_dns_hostnames = true
 
-  public_subnet_tags  = var.public_subnet_tags
-  private_subnet_tags = var.private_subnet_tags
+  public_subnet_tags = merge({
+    "kubernetes.io/role/elb" = "1",
+  },
+    module.context.tags,
+    var.public_subnet_tags
+  )
+
+  private_subnet_tags = merge({
+    "kubernetes.io/role/internal-elb" = "1"
+  },
+    module.context.tags,
+    var.private_subnet_tags
+  )
 
   tags = module.context.tags
 }
