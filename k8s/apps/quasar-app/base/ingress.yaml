@@ -18,6 +18,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: quasar-service
+                name: quasar-project
                 port:
                   number: 9000
