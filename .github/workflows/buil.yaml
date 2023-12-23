@@ -7,12 +7,6 @@ on:
       - '.github/**'
       - 'app/**'
       - 'helm/**'
-  pull_request:
-    branches: [ "main" ]
-    paths:
-      - '.github/**'
-      - 'app/**'
-      - 'helm/**'
   release:
     types:
       - created
