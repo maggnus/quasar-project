@@ -1,6 +1,1 @@
-assembly-versioning-scheme: MajorMinorPatch
-branches:
-  #  main:
-  #    label: dev
-  support:
-    label: dev
+mode: Mainline

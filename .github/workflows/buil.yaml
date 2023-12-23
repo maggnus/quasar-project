@@ -2,17 +2,17 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    #    branches: [ "main" ]
     paths:
       - '.github/**'
       - 'app/**'
       - 'helm/**'
-  pull_request:
-    branches: [ "main" ]
-    paths:
-      - '.github/**'
-      - 'app/**'
-      - 'helm/**'
+  #  pull_request:
+  #    branches: [ "main" ]
+  #    paths:
+  #      - '.github/**'
+  #      - 'app/**'
+  #      - 'helm/**'
   release:
     types:
       - created
