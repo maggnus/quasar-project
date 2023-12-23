@@ -2,6 +2,7 @@
 
 APP_NAME := quasar-app
 
+
 build:
 	@echo "Building $(APP_NAME)..."
 	@go build -o $(APP_NAME)
