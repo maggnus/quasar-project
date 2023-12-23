@@ -11,7 +11,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-    - host: quasar-project.com
+    - host: quasar.scalty.com
       http:
         paths:
           - path: /
