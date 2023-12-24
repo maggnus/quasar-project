@@ -1,4 +1,3 @@
-# atlantis.yaml
 version: 3
 projects:
   - name: 01-quasar-dev
