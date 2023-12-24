@@ -1,0 +1,8 @@
+# atlantis.yaml
+version: 3
+projects:
+  - name: 01-quasar-dev
+    dir: terraform/environments/01-quasar-dev
+    autoplan:
+      when_modified: [ "*.tf", "*.tfvars", "terraform/**/*" ]
+    apply_requirements: [ approved, mergeable ]
