@@ -36,11 +36,17 @@ Ensure that the following prerequisites are met:
 
 - [x] FluxCD integration
 - [x] Support multi-deployment and multi-staging configuration
+- [ ] Integration with external Secret Manager
+- [ ] Integration with external DNS provider
+- [ ] Service mesh integration
 
 ### CI/CD
 
-- [x] GitHub Action
-- [x] Pulling images and helm chart from OCI Docker
+- [x] GitHub Actions integration
+- [x] Pulling images and helm charts from OCI Docker Registry (GitHub)
+- [x] Integration with GitVerion tool
+- [ ] Scan Docker images for vulnerabilities
+- [ ] Static code analysis
 
 ## Deployment
 
