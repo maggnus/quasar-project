@@ -1,6 +1,6 @@
 # Terraform AWS VPC Module
 
-Terraform module for AWS EKS cluster deployment
+Terraform module for AWS VPC deployment
 
 ## Usage
 
