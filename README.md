@@ -3,6 +3,10 @@
 The reference deployment for a High-Availability (HA) web application, incorporating best practices in security and
 delivery through Continuous Integration/Continuous Deployment (CI/CD).
 
+## Architecture overview
+
+![Architecture overview](docs/images/architecture.jpeg)
+
 ## Requirements
 
 Ensure that the following prerequisites are met:
@@ -11,6 +15,32 @@ Ensure that the following prerequisites are met:
 - Kubernetes CLI (kubectl) installed
 - FluxCD CLI installed
 - Access to the AWS cloud provider
+
+## Features
+
+### Application
+
+- [x] Docker Image multistaging build
+- [x] Helm chart packaging
+
+### Terraform
+
+- [ ] Terraform IAM module
+- [x] Terraform VPC module
+- [x] Terraform EKS module
+- [x] Terraform Context module
+- [ ] Terraform ALB module
+- [ ] Terraform AWS Shield module
+
+### Kubernetes
+
+- [x] FluxCD integration
+- [x] Support multi-deployment and multi-staging configuration
+
+### CI/CD
+
+- [x] GitHub Action
+- [x] Pulling images and helm chart from OCI Docker
 
 ## Deployment
 
