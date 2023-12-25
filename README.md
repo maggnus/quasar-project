@@ -35,7 +35,6 @@ Ensure that the following prerequisites are met:
 ### Kubernetes
 
 - [x] FluxCD integration
-- [x] Support multi-deployment and multi-staging configuration
 - [ ] Integration with external Secret Manager
 - [ ] Integration with external DNS provider
 - [ ] Service mesh integration
@@ -45,6 +44,7 @@ Ensure that the following prerequisites are met:
 - [x] GitHub Actions integration
 - [x] Pulling images and helm charts from OCI Docker Registry (GitHub)
 - [x] Integration with GitVerion tool
+- [x] Support multi-deployment and multi-staging configuration
 - [ ] Scan Docker images for vulnerabilities
 - [ ] Static code analysis
 
