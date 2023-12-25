@@ -1,4 +1,4 @@
-# Terraform EKS Module
+# Terraform Context Module
 
 Terraform module for generate standardized context variables and resource tags.
 

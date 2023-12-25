@@ -1,4 +1,4 @@
-# Terraform EKS Module
+# Terraform AWS EKS Module
 
 Terraform module for AWS EKS cluster deployment
 
