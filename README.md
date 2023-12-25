@@ -9,7 +9,7 @@ delivery through Continuous Integration/Continuous Deployment (CI/CD).
 
 ## Demo
 
-[Link](https://quasar.scalty.com)
+[Link](http://quasar.scalty.com/)
 
 ## Requirements
 
