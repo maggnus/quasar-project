@@ -82,12 +82,6 @@ flux bootstrap github \
          --components-extra=image-reflector-controller,image-automation-controller
 ```
 
-## Roadmap
-
-- Additional browser support
-
-- Add more integrations
-
 ## Authors
 
 - [@maggnus](https://www.github.com/maggnus)
