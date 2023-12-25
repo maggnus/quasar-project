@@ -58,8 +58,7 @@ Ensure that the following prerequisites are met:
 
 ## Development
 
-For development purpose all components can be build and deploy separately
-to have a more frequently development cycle
+For development purposes, all components can be built and deployed separately to have a more frequent development cycle.
 
 ### Apply Terraform scripts
 
