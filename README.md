@@ -52,9 +52,9 @@ Ensure that the following prerequisites are met:
 - [ ] Scan Docker images for vulnerabilities
 - [ ] Static code analysis
 
-## Deployment
+## Deployment workflow
 
-TODO
+![Architecture overview](docs/images/cicd.jpeg)
 
 ## Development
 
