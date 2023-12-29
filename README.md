@@ -3,6 +3,62 @@
 The reference deployment for a High-Availability (HA) web application, incorporating best practices in security and
 delivery through Continuous Integration/Continuous Deployment (CI/CD).
 
+## Project structure
+
+```
+.
+├── app
+│   └── quasar-app
+│       └── templates
+├── docs
+│   └── images
+├── helm
+│   └── templates
+│       └── tests
+├── k8s
+│   ├── apps
+│   │   └── quasar-app
+│   │       ├── base
+│   │       └── overlays
+│   │           ├── dev
+│   │           └── prod
+│   ├── clusters
+│   │   └── dev
+│   │       ├── apps
+│   │       ├── infra
+│   │       ├── namespaces
+│   │       ├── repositories
+│   │       └── secrets
+│   ├── environments
+│   │   └── 01-quasar-dev
+│   │       └── flux-system
+│   └── infra
+│       ├── alb-controller
+│       │   ├── base
+│       │   └── overlays
+│       │       └── dev
+│       ├── external-secrets
+│       │   ├── base
+│       │   └── overlays
+│       │       └── dev
+│       └── metrics-server
+│           ├── base
+│           └── overlays
+│               └── dev
+├── terraform
+│   ├── environments
+│   │   └── 01-quasar-dev
+│   └── modules
+│       ├── terraform-aws-eks
+│       │   └── examples
+│       ├── terraform-aws-iam
+│       ├── terraform-aws-vpc
+│       │   └── examples
+│       └── terraform-context
+│           └── example
+└── work
+```
+
 ## Architecture overview
 
 ![Architecture overview](docs/images/architecture.jpeg)
