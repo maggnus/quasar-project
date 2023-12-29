@@ -8,7 +8,7 @@ build:
 
 run:
 	@echo "Running $(APP_NAME)..."
-	@./$(APP_NAME)
+	@go run server.go
 
 clean:
 	@echo "Cleaning up..."
