@@ -56,7 +56,7 @@ delivery through Continuous Integration/Continuous Deployment (CI/CD).
 │       │   └── examples
 │       └── terraform-context
 │           └── example
-└── work
+
 ```
 
 ## Architecture overview
