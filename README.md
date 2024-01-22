@@ -63,10 +63,6 @@ delivery through Continuous Integration/Continuous Deployment (CI/CD).
 
 ![Architecture overview](docs/images/architecture.jpeg)
 
-## Demo
-
-[Link](http://quasar.scalty.com/)
-
 ## Requirements
 
 Ensure that the following prerequisites are met:
